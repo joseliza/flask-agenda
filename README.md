@@ -12,7 +12,7 @@ Activamos el entorno (comando en Linux):
 ```bash
 $ source .venv/bin/activate
 ```
-Instalamos flask:
+Instalamos **flask**:
 ```bash
 (.venv)$ pip install flask
 ```
