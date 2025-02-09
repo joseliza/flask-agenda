@@ -1,5 +1,5 @@
 # Agenda de contactos
-agenda = {
+contactos = {
     "Ana": "612",
     "Luis": "622",
     "Pedro": "632",

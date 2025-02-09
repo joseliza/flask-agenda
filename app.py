@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from agenda import agenda
+from contactos import contactos
 
 app = Flask(__name__)
 
@@ -9,7 +9,7 @@ def menu():
 
 @app.route("/listar")
 def listar():
-    return render_template("listar.html", agenda=agenda)
+    return render_template("listar.html", contactos=contactos)
 
 @app.route("/buscar", methods=["GET"])
 def buscar():
@@ -17,8 +17,8 @@ def buscar():
     resultado = None
 
     if nombre:
-        if nombre in agenda:
-            resultado = (nombre, agenda[nombre])
+        if nombre in contactos:
+            resultado = (nombre, contactos[nombre])
         else:
             resultado = {}
 
@@ -32,10 +32,10 @@ def insertar():
         nombre = request.form["nombre"]
         telefono = request.form["telefono"]
 
-        if nombre in agenda:
+        if nombre in contactos:
             mensaje = "Ese contacto ya existe."
         else:
-            agenda[nombre] = telefono
+            contactos[nombre] = telefono
             mensaje = f"Contacto {nombre} agregado."
 
     return render_template("insertar.html", mensaje=mensaje)
@@ -47,8 +47,8 @@ def borrar():
     if request.method == "POST":
         nombre = request.form["nombre"]
 
-        if nombre in agenda:
-            del agenda[nombre]
+        if nombre in contactos:
+            del contactos[nombre]
             mensaje = f"Contacto {nombre} eliminado."
         else:
             mensaje = "Contacto no encontrado."
