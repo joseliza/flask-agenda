@@ -1,0 +1,17 @@
+{% extends "index.html" %}
+
+{% block content %}
+<h2>Lista de Contactos</h2>
+<table class="table table-striped table-bordered">
+    <tr>
+        <th>Nombre</th>
+        <th>Teléfono</th>
+    </tr>
+    {% for nombre, telefono in agenda.items() %}
+    <tr>
+        <td>{{ nombre }}</td>
+        <td>{{ telefono }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
